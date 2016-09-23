@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DataClassesGarage">
+  <DataContextMoniker Name="/DataClassesGarageDataContext" />
+  <nestedChildShapes>
+    <classShape Id="26f6e1fd-af63-4ef3-b01a-b27ec7f8a916" absoluteBounds="3.625, 6.5, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/DataClassesGarageDataContext/TConsommation" />
+      <nestedChildShapes>
+        <elementListCompartment Id="183c032c-1944-498c-a6f5-58fb160a3ca7" absoluteBounds="3.6400000000000006, 6.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8d5f6d12-ead9-40fb-bcb2-977bfa83e63a" absoluteBounds="4, 1.25, 2, 1.3862939453125">
+      <DataClassMoniker Name="/DataClassesGarageDataContext/TDetailMoteur" />
+      <nestedChildShapes>
+        <elementListCompartment Id="142636d0-cfca-49df-975f-29615f2ab764" absoluteBounds="4.0150000000000006, 1.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a1b117b2-22c1-42ed-91a6-23042ad51a3d" absoluteBounds="6.625, 2.125, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/DataClassesGarageDataContext/TMoteur" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9b896e73-9a0b-4024-b7f8-626dbeb56744" absoluteBounds="6.64, 2.585, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.09375 : 3.70359537760417); (8.09375 : 7.48964680989583); (5.625 : 7.48964680989583)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DataClassesGarageDataContext/TMoteur/TMoteur_TConsommation" />
+      <nodes>
+        <classShapeMoniker Id="a1b117b2-22c1-42ed-91a6-23042ad51a3d" />
+        <classShapeMoniker Id="26f6e1fd-af63-4ef3-b01a-b27ec7f8a916" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.625 : 2.38064697265625); (6 : 2.38064697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DataClassesGarageDataContext/TMoteur/TMoteur_TDetailMoteur" />
+      <nodes>
+        <classShapeMoniker Id="a1b117b2-22c1-42ed-91a6-23042ad51a3d" />
+        <classShapeMoniker Id="8d5f6d12-ead9-40fb-bcb2-977bfa83e63a" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="55b5960c-3333-4c2a-8cd9-b5b32be2ad4e" absoluteBounds="0.5, 0.75, 2, 1.9631982421875">
+      <DataClassMoniker Name="/DataClassesGarageDataContext/TUtilisateur" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a274d100-14f9-4b92-aba0-9ff3cc148e31" absoluteBounds="0.51499999999999968, 1.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4a96e96c-2b83-4d4c-99a3-1041bda6ca1c" absoluteBounds="1.375, 3.875, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/DataClassesGarageDataContext/TVoiture" />
+      <nestedChildShapes>
+        <elementListCompartment Id="de9da8ba-4e9c-4e02-bfec-78f07be3ef6a" absoluteBounds="1.3899999999999997, 4.335, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.375 : 4.03125); (4.53125 : 4.03125); (4.53125 : 2.6362939453125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DataClassesGarageDataContext/TVoiture/TVoiture_TDetailMoteur" />
+      <nodes>
+        <classShapeMoniker Id="4a96e96c-2b83-4d4c-99a3-1041bda6ca1c" />
+        <classShapeMoniker Id="8d5f6d12-ead9-40fb-bcb2-977bfa83e63a" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.9375 : 2.7131982421875); (1.9375 : 3.875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DataClassesGarageDataContext/TUtilisateur/TUtilisateur_TVoiture" />
+      <nodes>
+        <classShapeMoniker Id="55b5960c-3333-4c2a-8cd9-b5b32be2ad4e" />
+        <classShapeMoniker Id="4a96e96c-2b83-4d4c-99a3-1041bda6ca1c" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="9f343167-0090-422b-864d-baa9ebc2216d" absoluteBounds="5.125, 4.25, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/DataClassesGarageDataContext/TEntretien" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0a0ef62b-e213-4da5-add8-c28a8453b0bf" absoluteBounds="5.14, 4.71, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.875 : 3.70359537760417); (6.875 : 4.25)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DataClassesGarageDataContext/TMoteur/TMoteur_TEntretien" />
+      <nodes>
+        <classShapeMoniker Id="a1b117b2-22c1-42ed-91a6-23042ad51a3d" />
+        <classShapeMoniker Id="9f343167-0090-422b-864d-baa9ebc2216d" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

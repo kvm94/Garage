@@ -1,0 +1,18 @@
+﻿<Window x:Name="window_Connexion" x:Class="Garage.Connexion"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Garage"
+        mc:Ignorable="d"
+        Title="Connexion" Height="177.966" Width="284.11" Closed="window_Connexion_Closed" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="#FF686868">
+    <Grid Background="#FF686868">
+        <Label x:Name="label_Pseudo" Content="Pseudo :" HorizontalAlignment="Left" Margin="23,30,0,0" VerticalAlignment="Top" FontFamily="Californian FB" FontSize="13.333"/>
+        <Label x:Name="label_Mdp" Content="Mot de passe :" HorizontalAlignment="Left" Margin="23,68,0,0" VerticalAlignment="Top" FontFamily="Californian FB" FontSize="13.333"/>
+        <TextBox x:Name="textBox_Pseudo" HorizontalAlignment="Left" Height="23" Margin="138,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <PasswordBox x:Name="passwordBox_Mdp" HorizontalAlignment="Left" Margin="138,65,0,0" VerticalAlignment="Top" Width="120" Height="22"/>
+        <Button x:Name="button_Inscription" Content="S'inscrire" HorizontalAlignment="Left" Margin="47,109,0,0" VerticalAlignment="Top" Width="75" Click="button_Inscription_Click"/>
+        <Button x:Name="button_Connexion" Content="Se connecter" HorizontalAlignment="Left" Margin="144,109,0,0" VerticalAlignment="Top" Width="75" Click="button_Connexion_Click"/>
+
+    </Grid>
+</Window>

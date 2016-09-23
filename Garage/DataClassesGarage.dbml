@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Garage" Class="DataClassesGarageDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=VNITRO-KEVIN\SQLDEVEL;Initial Catalog=Garage;Integrated Security=True" SettingsObjectName="Garage.Properties.Settings" SettingsPropertyName="GarageConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.TConsommation" Member="TConsommation">
+    <Type Name="TConsommation">
+      <Column Name="numConsommation" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="numMoteur" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="litre" Type="System.Single" DbType="Real NOT NULL" CanBeNull="false" />
+      <Column Name="cout" Type="System.Single" DbType="Real NOT NULL" CanBeNull="false" />
+      <Column Name="kmC" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="TMoteur_TConsommation" Member="TMoteur" ThisKey="numMoteur" OtherKey="numMoteur" Type="TMoteur" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TDetailMoteur" Member="TDetailMoteur">
+    <Type Name="TDetailMoteur">
+      <Column Name="numVoiture" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="numMoteur" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="km" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="TMoteur_TDetailMoteur" Member="TMoteur" ThisKey="numMoteur" OtherKey="numMoteur" Type="TMoteur" IsForeignKey="true" />
+      <Association Name="TVoiture_TDetailMoteur" Member="TVoiture" ThisKey="numVoiture" OtherKey="numVoiture" Type="TVoiture" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TMoteur" Member="TMoteur">
+    <Type Name="TMoteur">
+      <Column Name="numMoteur" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="carburant" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="cylindre" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="puissance" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="TMoteur_TConsommation" Member="TConsommation" ThisKey="numMoteur" OtherKey="numMoteur" Type="TConsommation" />
+      <Association Name="TMoteur_TDetailMoteur" Member="TDetailMoteur" ThisKey="numMoteur" OtherKey="numMoteur" Type="TDetailMoteur" />
+      <Association Name="TMoteur_TEntretien" Member="TEntretien" ThisKey="numMoteur" OtherKey="numMoteur" Type="TEntretien" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TUtilisateur" Member="TUtilisateur">
+    <Type Name="TUtilisateur">
+      <Column Name="numUtil" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="pseudo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="mdp" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="nom" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="prenom" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="TUtilisateur_TVoiture" Member="TVoiture" ThisKey="numUtil" OtherKey="numUtil" Type="TVoiture" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TVoiture" Member="TVoiture">
+    <Type Name="TVoiture">
+      <Column Name="numVoiture" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="numUtil" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="marque" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="modele" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="type" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="couleur" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="annee" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="TVoiture_TDetailMoteur" Member="TDetailMoteur" ThisKey="numVoiture" OtherKey="numVoiture" Type="TDetailMoteur" />
+      <Association Name="TUtilisateur_TVoiture" Member="TUtilisateur" ThisKey="numUtil" OtherKey="numUtil" Type="TUtilisateur" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TEntretien" Member="TEntretien">
+    <Type Name="TEntretien">
+      <Column Name="numEntretient" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="numMoteur" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="kmE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="info" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Association Name="TMoteur_TEntretien" Member="TMoteur" ThisKey="numMoteur" OtherKey="numMoteur" Type="TMoteur" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.DeleteCar" Method="DeleteCar">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetNumMoteur" Method="GetNumMoteur">
+    <Parameter Name="carburant" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="cylindre" Type="System.Int32" DbType="Int" />
+    <Parameter Name="puissance" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetNumMoteurResult">
+      <Column Name="numMoteur" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetNumUser" Method="GetNumUser">
+    <Parameter Name="pseudo" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="GetNumUserResult">
+      <Column Name="numUtil" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetUser" Method="GetUser">
+    <Parameter Name="login" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="passwd" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="GetUserResult">
+      <Column Name="numUtil" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="pseudo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="mdp" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="nom" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="prenom" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SearchCar" Method="SearchCar">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="SearchCarResult">
+      <Column Name="numVoiture" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="numUtil" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="marque" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="modele" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="type" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="couleur" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="annee" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SearchUser" Method="SearchUser">
+    <Parameter Name="pseudo" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="SearchUserResult">
+      <Column Name="pseudo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.UpdateUser" Method="UpdateUser">
+    <Parameter Name="pseudo" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="nom" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="prenom" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="email" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="mdp" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetNumVoiture" Method="GetNumVoiture">
+    <Parameter Name="numUtil" Type="System.Int32" DbType="Int" />
+    <Parameter Name="marque" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="modele" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="type" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="annee" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetNumVoitureResult">
+      <Column Name="numVoiture" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.UpdateCar" Method="UpdateCar">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="marque" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="modele" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="type" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="couleur" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="annee" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdateMotor" Method="UpdateMotor">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="carburant" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="puissance" Type="System.Int32" DbType="Int" />
+    <Parameter Name="cylindre" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetVoiture" Method="GetVoiture">
+    <Parameter Name="pseudo" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="GetVoitureResult">
+      <Column Name="numVoiture" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="marque" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="modele" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="type" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="couleur" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="annee" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="km" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="carburant" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="cylindre" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="puissance" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="numMoteur" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.UpdateDetail" Method="UpdateDetail">
+    <Parameter Name="numMoteur" Type="System.Int32" DbType="Int" />
+    <Parameter Name="numVoiture" Type="System.Int32" DbType="Int" />
+    <Parameter Name="km" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetEntretien" Method="GetEntretien">
+    <Parameter Name="numMoteur" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetEntretienResult">
+      <Column Name="numEntretient" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="numMoteur" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="kmE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="info" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.DeleteDetail" Method="DeleteDetail">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeleteMotor" Method="DeleteMotor">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeleteEntretien" Method="DeleteEntretien">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetConsommation" Method="GetConsommation">
+    <Parameter Name="numMoteur" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetConsommationResult">
+      <Column Name="numConsommation" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="numMoteur" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="litre" Type="System.Single" DbType="Real NOT NULL" CanBeNull="false" />
+      <Column Name="cout" Type="System.Single" DbType="Real NOT NULL" CanBeNull="false" />
+      <Column Name="kmC" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.DeleteConsommation" Method="DeleteConsommation">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>
